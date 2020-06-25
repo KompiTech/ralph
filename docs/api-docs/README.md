@@ -15,6 +15,28 @@ For example:
 curl -X GET https://ralph-demo.allegro.tech/api/regions/12/ -H 'Authorization: Token fc666ba738bb98525da9c04eba6987420f2f5044'
 ```
 
+You can limit number of returned objects:
+```
+curl -X GET https://ralph-demo.allegro.tech/api/regions/12/?limit=5 -H 'Authorization: Token fc666ba738bb98525da9c04eba6987420f2f5044'
+```
+
+For resources creation use curl:
+```
+curl -X POST https://ralph-demo.allegro.tech/api/users/ -H 'Authorization: Token fc666ba738bb98525da9c04eba6987420f2f5044' \
+-H 'Accept: application/json' \
+-H 'Content-Type: application/json' \
+--data-raw '{"param": "value"}'
+```
+
+For resource creation with its relations use id of the referenced asset to add the relation. Here we create user with Name Jon Doe and we reference region with id 100. Then we also connect user with assets he use, in this example 1000 can be id of his laptop and 1001 can be his work phone.
+```
+{
+  "name": "Jon Doe",
+  "region": 100,
+  "assets_as_user": [1000, 1001]
+}
+```
+
 ## Available resources
 
 - [accesscard](accesscard.md)
